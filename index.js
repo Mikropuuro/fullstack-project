@@ -18,7 +18,7 @@ const port = process.env.PORT || 8080;
 const db = [{ name: "tiina" }, { name: "jack" }];
 
 var pool = mysql.createPool(config);
-app.get("/locations", (req, res) => {
+app.get("/", (req, res) => {
   pool.query("SELECT * from locations", (error, results) => {
     if (error) {
       console.log(error);
