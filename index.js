@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 
 const db = [{ name: "tiina" }, { name: "jack" }];
 
-app.get("/names", (req, res) => {
+app.get("/", (req, res) => {
   res.send(db);
 });
 
