@@ -13,23 +13,24 @@ var config = {
   connectionLimit: 10,
 };
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
+app.use(express.static("frontend/build"));
+
 const port = process.env.PORT || 8080;
 
-const db = [{ name: "tiina" }, { name: "jack" }];
-
 var pool = mysql.createPool(config);
-app.get("/", (req, res) => {
-  pool.query("SELECT * from locations", (error, results) => {
+app.get("/words", (req, res) => {
+  pool.query("select * from words", (error, results) => {
     if (error) {
       console.log(error);
     } else {
       res.send(results);
     }
   });
-});
-
-app.get("/", (req, res) => {
-  res.send(db);
 });
 
 const server = app.listen(port, () => {
