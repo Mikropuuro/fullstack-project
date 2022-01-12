@@ -1,8 +1,9 @@
 import "./App.css";
 import React from "react";
+import Textfield from "./textfield";
 
-class Word extends React.Component {
-  state = { words: [{ finnish: "jänis", english: "rabbit" }] };
+class WordFinnish extends React.Component {
+  state = { words: [{ id: null, finnish: "jänis", english: "rabbit" }] };
 
   async componentDidMount() {
     let hr = await fetch("http://localhost:8080/words");
@@ -12,15 +13,16 @@ class Word extends React.Component {
 
   render() {
     var finnish = this.state.words.map((word) => <li>{word.finnish}</li>);
-    var english = this.state.words.map((word) => <li>{word.english}</li>);
+    var english = this.state.words.map((word) => word.english);
+    console.log(english);
 
     return (
       <div>
         <ul>{finnish}</ul>
-        <ul>{english}</ul>
+        <Textfield english={english} />
       </div>
     );
   }
 }
 
-export default Word;
+export default WordFinnish;
