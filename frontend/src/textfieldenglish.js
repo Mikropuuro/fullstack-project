@@ -1,6 +1,6 @@
 import React from "react";
 
-class Textfield extends React.Component {
+class TextfieldEnglish extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: "", count: 0 };
@@ -14,10 +14,10 @@ class Textfield extends React.Component {
   }
 
   handleSubmit(event) {
-    if (this.props.english[this.props.count] === this.state.value) {
+    if (this.props.finnish[this.props.count] === this.state.value) {
       alert("oikein");
-      this.props.callBackCount(+1);
-      this.props.callBackId(+1);
+      this.props.callBackCount();
+      this.props.callBackId();
     } else {
       alert("väärin");
     }
@@ -30,7 +30,7 @@ class Textfield extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Word in English:
+            Word in Finnish:
             <input
               type="text"
               value={this.state.value}
@@ -44,4 +44,4 @@ class Textfield extends React.Component {
   }
 }
 
-export default Textfield;
+export default TextfieldEnglish;
