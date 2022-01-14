@@ -4,7 +4,6 @@ const app = express();
 const mysql = require("mysql");
 var cors = require("cors");
 app.use(cors());
-const path = require("path");
 
 var config = {
   host: process.env.host,
@@ -14,9 +13,9 @@ var config = {
   connectionLimit: 10,
 };
 
-app.use(express.static(path.join(__dirname, "frontend/build")));
+app.use(express.static("frontend/build"));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 var pool = mysql.createPool(config);
 app.get("/words", (req, res) => {

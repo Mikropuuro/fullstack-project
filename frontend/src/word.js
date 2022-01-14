@@ -22,7 +22,7 @@ class WordFinnish extends React.Component {
    */
 
   async componentDidMount() {
-    let hr = await fetch("http://localhost:8080/words");
+    let hr = await fetch("/words");
     let data = await hr.json();
     this.setState({ words: data });
   }
