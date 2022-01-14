@@ -3,6 +3,10 @@ import { Route, Routes, NavLink, HashRouter } from "react-router-dom";
 import WordFinnish from "./word";
 import WordEnglish from "./wordenglish";
 
+/**
+ *
+ * @returns Links to other components
+ */
 export default function Nav() {
   return (
     <HashRouter>

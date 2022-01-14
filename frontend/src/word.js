@@ -2,11 +2,24 @@ import "./App.css";
 import React from "react";
 import Textfield from "./textfield";
 
+/**
+ * If there is no connection to the database, the UI will display the word pair below.
+ */
+
 class WordFinnish extends React.Component {
+  /**
+   * This state holds words in the same format as they are in the database.
+   * The count variable works as counting the player's points and also switches between the words in the UI.
+   * If there is no connection to the database, the UI will display the word pair below.
+   */
   state = {
     words: [{ id: 0, finnish: "jänis", english: "rabbit" }],
     count: 0,
   };
+
+  /**
+   * This componentDidMount fetches all the words from the database and sets them in the state.
+   */
 
   async componentDidMount() {
     let hr = await fetch("http://localhost:8080/words");
@@ -14,15 +27,20 @@ class WordFinnish extends React.Component {
     this.setState({ words: data });
   }
 
+  /**
+   * This function is given as a parameter to the Textfieldfunction.
+   *
+   */
+
   callBackCount = () => {
     let tmpCount = this.state.count + 1;
     this.setState({ count: tmpCount });
   };
 
-  callBackId = () => {
-    let tmpId = this.state.id + 1;
-    this.setState({ id: tmpId });
-  };
+  /**
+   * This function checks if the user's points is the same as the length of the database.
+   * If they are the same, it will inform the user about winning the game
+   */
 
   winCheck = () => {
     if (this.state.count === this.state.words.length) {
@@ -30,6 +48,12 @@ class WordFinnish extends React.Component {
     }
   };
   render() {
+    /**
+     * These two variables are arrays. "finnish"-variable holds the finnish words and
+     * the "english"-variable holds the english words.
+     *
+     * Both of them are given as props to the Textfield-function
+     */
     var finnish = this.state.words.map((word) => word.finnish);
     var english = this.state.words.map((word) => word.english);
     console.log(finnish);
@@ -49,7 +73,6 @@ class WordFinnish extends React.Component {
                 english={english}
                 finnish={finnish}
                 callBackCount={this.callBackCount}
-                callBackId={this.callBackId}
               />
             }
           </li>
