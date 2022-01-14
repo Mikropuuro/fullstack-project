@@ -6,10 +6,10 @@ var cors = require("cors");
 app.use(cors());
 
 var config = {
-  host: process.env.host,
-  user: process.env.user,
-  password: process.env.password,
   database: process.env.database,
+  host: process.env.host,
+  password: process.env.password,
+  user: process.env.user,
   connectionLimit: 10,
 };
 
