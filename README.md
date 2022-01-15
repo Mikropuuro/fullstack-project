@@ -16,3 +16,5 @@ Choose in which language you want to guess words in. After that you just write y
 This app is made by Samuli Immonen
 
 Overview of the app: https://www.youtube.com/watch?v=Yo1TfEpKVyM
+
+App in Heroku: https://qfsaim-app.herokuapp.com/
